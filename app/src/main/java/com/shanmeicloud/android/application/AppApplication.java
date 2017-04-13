@@ -28,6 +28,7 @@ public class AppApplication extends Application {
     }
 
     private void initData() {
+
         //初始化 阿里的arouter 跳转框架
         ARouter.init(this);
         //内存泄露检测工具
