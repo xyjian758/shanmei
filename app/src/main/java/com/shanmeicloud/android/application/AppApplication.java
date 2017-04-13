@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 import java.util.Iterator;
 import java.util.List;
@@ -22,6 +24,13 @@ import cn.jpush.android.api.JPushInterface;
 public class AppApplication extends Application {
     private static AppApplication appApplication;
     private static RefWatcher refWatcher;
+
+    {
+        //友盟配置各平台信息
+        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com");
+    }
 
     @Override
     public void onCreate() {
@@ -41,7 +50,14 @@ public class AppApplication extends Application {
 
         initEMClient();
 
+        initUM();
+
     }
+
+    private void initUM() {
+        UMShareAPI.get(this);
+    }
+
     //初始化环信
     private void initEMClient() {
 
