@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_bg"
+    tools:context="com.shanmeicloud.android.mvp.login.LoginActivity">
+    <!--头布局-->
+    <include layout="@layout/item_top"
+        android:id="@+id/include" />
+    <!--公司logo-->
+    <ImageView
+        android:src="@mipmap/logo_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="142dp"
+        android:layout_marginTop="13dp" />
+
+</RelativeLayout>

@@ -8,4 +8,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="toast_white">#ffffff</color>
     <color name="toast_stroke_gray">#99d4d4d4</color>
+
+    <!--登陆-->
+    <color name="login_393a3e" >#393a3e</color>
+    <color name="login_white" >#ffffff</color>
 </resources>

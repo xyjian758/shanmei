@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 @SuppressWarnings(value = "all")
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements BaseView{
 
     //public Context mContext;
     private Unbinder unbinder;
@@ -170,5 +170,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (null != unbinder) {
             unbinder.unbind();
         }
+    }
+
+    @Override
+    public void showLoading(String title) {
+        startProgressDialog(title);
+    }
+
+    @Override
+    public void stopLoading() {
+        stopProgressDialog();
+    }
+
+    @Override
+    public void showErrorTip(String msg) {
+        showShortToast(msg);
     }
 }

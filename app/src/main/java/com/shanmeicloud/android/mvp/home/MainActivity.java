@@ -1,4 +1,4 @@
-package com.shanmeicloud.android.mvp.login;
+package com.shanmeicloud.android.mvp.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,24 +42,10 @@ public class MainActivity extends MvpActivity<MainPresenter, MainModel> implemen
 
     @OnClick(R.id.tv_button)
     public void onClick() {
-//        mPresenter.testPresenter();//测试网络
-        testUM();//测试友盟分享调起
+        mPresenter.testPresenter();//测试网络
+//        testUM();//测试友盟分享调起
     }
 
-    @Override
-    public void showLoading(String title) {
-        startProgressDialog(title);
-    }
-
-    @Override
-    public void stopLoading() {
-        stopProgressDialog();
-    }
-
-    @Override
-    public void showErrorTip(String msg) {
-        showShortToast(msg);
-    }
 
     @Override
     public void testView() {

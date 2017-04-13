@@ -9,7 +9,7 @@ import com.shanmeicloud.android.R;
 import com.shanmeicloud.android.base.MvpActivity;
 import com.shanmeicloud.android.canstant.ArouteConstant;
 import com.shanmeicloud.android.canstant.Constant;
-import com.shanmeicloud.android.mvp.login.LoginBean;
+import com.shanmeicloud.android.mvp.home.LoginBean;
 import com.shanmeicloud.android.utils.StormRoid;
 import com.shanmeicloud.android.rxnet.FilterSubscriber;
 
