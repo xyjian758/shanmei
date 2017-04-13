@@ -1,10 +1,15 @@
 package com.shanmeicloud.android.application;
 
+import android.app.ActivityManager;
 import android.app.Application;
+import android.content.pm.PackageManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+
+import java.util.Iterator;
+import java.util.List;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -28,16 +33,34 @@ public class AppApplication extends Application {
     }
 
     private void initData() {
+        initArouter();
 
-        //初始化 阿里的arouter 跳转框架
-        ARouter.init(this);
-        //内存泄露检测工具
-        refWatcher = LeakCanary.install(this);
+        initLeakCanary();
+
+        initJPush();
+
+        initEMClient();
+
+    }
+    //初始化环信
+    private void initEMClient() {
+
+    }
+
+    private void initJPush() {
         //初始化极光
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
+    }
 
+    private void initLeakCanary() {
+        //内存泄露检测工具
+        refWatcher = LeakCanary.install(this);
+    }
 
+    private void initArouter() {
+        //初始化 阿里的arouter 跳转框架
+        ARouter.init(this);
     }
 
     public static RefWatcher getRefWatcher() {
@@ -48,5 +71,25 @@ public class AppApplication extends Application {
 
     public static AppApplication getAppContext() {
         return appApplication;
+    }
+
+    private String getAppName(int pID) {
+        String processName = null;
+        ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
+        List l = am.getRunningAppProcesses();
+        Iterator i = l.iterator();
+        PackageManager pm = this.getPackageManager();
+        while (i.hasNext()) {
+            ActivityManager.RunningAppProcessInfo info = (ActivityManager.RunningAppProcessInfo) (i.next());
+            try {
+                if (info.pid == pID) {
+                    processName = info.processName;
+                    return processName;
+                }
+            } catch (Exception e) {
+                // Log.d("Process", "Error>> :"+ e.toString());
+            }
+        }
+        return processName;
     }
 }
