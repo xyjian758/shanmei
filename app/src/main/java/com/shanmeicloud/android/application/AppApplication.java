@@ -6,6 +6,8 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
+import cn.jpush.android.api.JPushInterface;
+
 
 /**
  * author  xyj
@@ -30,6 +32,9 @@ public class AppApplication extends Application {
         ARouter.init(this);
         //内存泄露检测工具
         refWatcher = LeakCanary.install(this);
+        //初始化极光
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
 
 
     }

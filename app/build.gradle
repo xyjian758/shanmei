@@ -11,6 +11,18 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi',"x86"
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64', 'armeabi-v7a', 'armeabi-v8a'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : "com.shanmeicloud.android",
+                JPUSH_APPKEY : "5b8461e6e93425cbcee9b3e7", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "guanfang", //暂时填写默认值即可.
+        ]
     }
     buildTypes {
         release {
@@ -69,4 +81,9 @@ dependencies {
     // ------------- LeakCanary -------------
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    // ------------- 极光 -------------
+    compile 'cn.jiguang.sdk:jpush:3.0.3'  // 此处以JPush 3.0.3 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
+
+
 }

@@ -1,8 +1,9 @@
 package com.shanmeicloud.android.utils;
 
-import android.support.v4.BuildConfig;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.shanmeicloud.android.BuildConfig;
 
 
 /**

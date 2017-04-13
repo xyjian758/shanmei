@@ -1,9 +1,10 @@
 package com.shanmeicloud.android.utils;
 
-import android.support.v4.BuildConfig;
+
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.shanmeicloud.android.BuildConfig;
 import com.shanmeicloud.android.api.APIStores;
 import com.shanmeicloud.android.canstant.Constant;
 import com.shanmeicloud.android.rxnet.BaseData;
